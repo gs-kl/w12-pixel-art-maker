@@ -51,7 +51,7 @@ table {
 
 #grid {
 	position: relative;
-	margin: 50px auto;
+	margin: 0px auto;
 	width: 500px;
 }
 
@@ -93,4 +93,9 @@ table {
 
 .selected {
 	border: 5px solid black;
+}
+
+#grid-wrapper {
+	padding: 10px;
+	background-color: black;
 }

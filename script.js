@@ -1,3 +1,4 @@
+var grid = document.querySelector("#grid");
 var cells = document.querySelectorAll("#grid .row div");
 var paletteCells = document.querySelectorAll("#palette .row div");
 var colorDisplays = document.querySelectorAll(".color-display");
@@ -47,10 +48,35 @@ function unselect(colorDisplay){
 }
 
 
+var mouseButtonDown = "false";
+
+grid.onmousedown = function(){
+  mouseButtonDown = "true";
+}
+
+document.body.onmouseup = function(){
+  mouseButtonDown = "false";
+}
+
 
 
 for (var i = 0; i < cells.length; i++){
   cells[i].onclick = colorCell;
+  thisArg = this;
+  cells[i].onmouseover = function(){
+    if (mouseButtonDown === "true"){
+
+      if (colorDisplaySelected === paintbrushColorDisplay){
+        if (((this.className).indexOf("colored")) === -1) {
+          this.className = this.className + " colored";
+          this.style.backgroundColor = paintbrushColor;
+        } else if (this.style.backgroundColor !== paintbrushColor){
+          this.style.backgroundColor = paintbrushColor;
+        }
+      }
+
+    }
+  }
 }
 
 
